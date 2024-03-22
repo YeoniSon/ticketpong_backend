@@ -11,9 +11,9 @@ const pool = mariadb.createPool({
 
 pool.getConnection((err, conn) => {
   if (err) {
-    console.error("Pool DB연결 실패: " + err);
+    console.log("Pool DB연결 실패: " + err);
   } else {
-    console.log("Pool DB연결 성공");
+    console.log("Pool DB 연결 성공");
   }
 });
 

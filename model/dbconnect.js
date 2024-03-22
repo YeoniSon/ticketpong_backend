@@ -11,9 +11,9 @@ const db = mariadb.createConnection(
 
 db.connect((err) => {
   if (err) {
-    console.error("DB연결 실패: " + err);
+    console.log("DBconnect 연결 실패" + err);
   } else {
-    console.log("DB연결 성공");
+    console.log("DBconnect 연결 성공");
   }
 });
 
