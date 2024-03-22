@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공연 목록</title>
+</head>
+<body>
+    <h1>공연 목록</h1>
+    <ul id="showList">
+        <!-- 서버에서 받아온 데이터가 동적으로 추가될 공간 -->
+    </ul>
+
+    <script>
+        window.onload = function() {
+            fetch('/api/shows') // 서버에서 공연 목록을 제공하는 API 엔드포인트로 요청을 보냅니다.
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json(); // 응답을 JSON 형식으로 파싱합니다.
+                })
+                .then(data => {
+                    const showList = document.getElementById('showList');
+                    data.forEach(show => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `
+                            <strong>공연아이디:</strong> ${show.mt20id}<br>
+                            <strong>공연명:</strong> ${show.prfnm}<br>
+                            <strong>공연시작일:</strong> ${show.prfpdfrom}<br>
+                            <strong>공연마감일:</strong> ${show.prfpdto}<br>
+                            <strong>공연장소:</strong> ${show.fcltynm}<br>
+                            <strong>공연포스터:</strong> <img src="${show.poster}" alt="포스터"><br>
+                            <strong>공연장르:</strong> ${show.genrenm}<br>
+                            <strong>오픈런:</strong> ${show.openrun}<br>
+                            <strong>공연상태:</strong> ${show.prfstate}<br>
+                            <hr>
+                        `;
+                        showList.appendChild(li);
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        };
+    </script>
+</body>
+</html>
