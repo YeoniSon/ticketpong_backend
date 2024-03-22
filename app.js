@@ -30,10 +30,14 @@ app.use(
 
 // 라우터 설정
 const indexRouter = require("./routes/index");
-const signupRouter = require("./routes/signup");
-const loginRouter = require("./routes/login");
-const mainRouter = require("./routes/main");
-const logoutRouter = require("./routes/logout");
+const signupRouter = require("./routes/member/signup");
+const loginRouter = require("./routes/member/login");
+const mainRouter = require("./routes/member/main");
+const logoutRouter = require("./routes/member/logout");
+const manageLogin = require("./routes/manage/manageLogin");
+const manageAdd = require("./routes/manage/manageAdd");
+const manageMain = require("./routes/manage/manageMain");
+const manageLogout = require("./routes/manage/manageLogout");
 
 //라우터 연결
 app.use("/", indexRouter);
@@ -41,6 +45,10 @@ app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/main", mainRouter);
 app.use("/logout", logoutRouter);
+app.use("/manage", manageLogin);
+app.use("/manage/manageAdd", manageAdd);
+app.use("/manage/manageMain", manageMain);
+app.use("/manage/manageLogout", manageLogout);
 
 //에러 핸들러
 // 404 에러 핸들러

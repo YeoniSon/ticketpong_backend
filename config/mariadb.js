@@ -2,23 +2,20 @@ const mariadb = require("mysql2");
 
 info = {
   host: "localhost",
-  user: "root",
-  password: "1234",
-  port: 3306,
-  database: "nodesql",
+  user: "ticketpong",
+  password: "ticketpong",
+  prot: 3000,
+  database: "ticketpong",
 };
 
 let db = mariadb.createConnection(info);
 
 db.connect((err) => {
   if (err) {
-    console.error("DB연결 실패: " + err);
+    console.log("DB 연결 실패" + err);
   } else {
-    console.log("DB연결 성공");
+    console.log("DB 연결 성공");
   }
 });
 
-module.exports = {
-  db,
-  info,
-};
+module.exports = { db, info };
