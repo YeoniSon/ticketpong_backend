@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %>></title>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form action="/menage/manageAdd" method="post">
+      <input type="text" name="id" placeholder="ID를 입력하세요" required />
+      <input type="text" name="name" placeholder="이름을 입력하세요" required />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password를 입력하세요"
+        required
+      />
+      <input
+        type="password"
+        name="repassword"
+        placeholder="확인 Password를 입력하세요"
+        required
+      />
+      <input type="tel" name="phone" placeholder="연락처 입력하세요" required />
+      <div>
+        <input type="radio" name="role" id="mainRole" value="주관리자" />
+        <label for="mainRole">주관리자</label>
+        <input type="radio" name="role" id="secondRole" value="부관리자" />
+        <label for="secondRole">부관리자</label>
+        <input type="radio" name="role" id="general" value="일반관리자" />
+        <label for="general">일반관리자</label>
+      </div>
+      <input type="text" , name="part" placeholder="직급" required />
+      <button type="submit">추가하기</button>
+    </form>
+  </body>
+</html>
